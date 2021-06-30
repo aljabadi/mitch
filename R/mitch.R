@@ -815,7 +815,7 @@ diffbind_score <- function(y , geneIDcol = geneIDcol ) {
 }
 
 
-preranked_score <- function(y, joinType , geneIDcol = geneIDcol ) {
+preranked_score <- function(y, joinType , geneIDcol) {
 
     if (!is.null(attributes(y)$geneIDcol)) {
         NCOL = ncol(y)
@@ -988,7 +988,7 @@ mitch_import <- function(x, DEtype, geneIDcol = NULL, geneTable = NULL,
     } else if (DEtype == "diffbind" ) {
         xx <- lapply(x, diffbind_score)
     } else if (DEtype == "preranked" || DEtype == "prescored") {
-        xx <- lapply(x, preranked_score, joinType = joinType)
+        xx <- lapply(x, preranked_score, joinType = joinType,  geneIDcol = geneIDcol)
     } else {
         stop(paste("Specified DEtype does not match one of the following:",
         validDEtype))
